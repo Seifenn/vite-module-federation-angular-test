@@ -1,11 +1,11 @@
 import { defineConfig } from "vite";
 import angular from "@analogjs/vite-plugin-angular";
-import federation from "@originjs/vite-plugin-federation";
+import { federation } from "@module-federation/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   build: {
-    target: ["es2020"],
+    target: "chrome89",
   },
   resolve: {
     mainFields: ["module"],
@@ -14,8 +14,16 @@ export default defineConfig(({ mode }) => ({
     federation({
       name: "host-app",
       remotes: {
-        remote_app: "http://localhost:5175/remoteEntry.js",
+        remote_app: {
+          type: "module",
+          name: "remote_app",
+          entry: "http://localhost:5174/remoteEntry.js",
+          entryGlobalName: "remote_app",
+          shareScope: "default",
+        },
       },
+      filename: "remoteEntry.js",
+      shared: ['@angular/core']
     }),
     angular(),
   ],

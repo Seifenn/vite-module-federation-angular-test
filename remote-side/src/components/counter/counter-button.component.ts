@@ -3,7 +3,7 @@ import { Component, signal } from "@angular/core";
 @Component({
   selector: "app-counter-button",
   standalone: true,
-  template: ` <button (click)="increment()">Count {{ count() }}</button> `,
+  template: `<div>Remote Counter</div><button (click)="increment()">Count {{ count() }}</button> `,
   styles: `
       :host {
         display: flex;
@@ -21,3 +21,4 @@ export class CounterButtonComponent {
     this.count.update((cnt) => ++cnt);
   }
 }
+
