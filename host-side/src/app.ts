@@ -1,10 +1,12 @@
-import { ViewContainerRef, Component, Injector } from "@angular/core";
-import { CommonModule } from "@angular/common";
+import { CommonModule } from '@angular/common';
+import { Component, ViewChild, ViewContainerRef } from '@angular/core';
+
 @Component({
-  selector: "app-root",
-  standalone: true,
-  template: ` <h2>Host Application</h2> `,
-  styles: `
+	selector: 'app-root',
+	standalone: true,
+	template: ` <h2>Host Application</h2>
+		<div #remote_appButton></div>`,
+	styles: `
     :host {
       display: flex;
       flex-direction: column;
@@ -13,31 +15,14 @@ import { CommonModule } from "@angular/common";
       width: 100%;
     }
   `,
-  imports: [CommonModule],
+	imports: [CommonModule],
 })
 export class AppComponent {
-  constructor(
-    private viewContainer: ViewContainerRef,
-    private injector: Injector
-  ) {}
+	@ViewChild('remote_appButton', { read: ViewContainerRef })
+	viewContainer!: ViewContainerRef;
 
-  myComponent: any;
-
-  async ngOnInit() {
-    // Dynamically import the remote component
-    try {
-      const module = (await import("remote_app/Button")).default;
-      console.log(module);
-      const { BlablaComponent } = await import("./blabla");
-
-      this.viewContainer.createComponent(BlablaComponent, {
-        injector: this.injector,
-      });
-      this.viewContainer.createComponent(module.CounterButtonComponent, {
-        injector: this.injector,
-      });
-    } catch (error) {
-      console.error("Error loading component:", error);
-    }
-  }
+	async ngAfterViewInit() {
+		const m = await import('remote_app/Button');
+		this.viewContainer.createComponent(m.CounterButtonComponent);
+	}
 }

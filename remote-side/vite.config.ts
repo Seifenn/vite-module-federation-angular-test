@@ -1,11 +1,11 @@
 import { defineConfig } from "vite";
 import angular from "@analogjs/vite-plugin-angular";
-import federation from "@originjs/vite-plugin-federation";
+import { federation } from "@module-federation/vite";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
   build: {
-    target: ["es2020"],
+    target: "chrome89",
   },
   resolve: {
     mainFields: ["module"],
@@ -14,10 +14,10 @@ export default defineConfig(({ mode }) => ({
     federation({
       name: "remote-app",
       filename: "remoteEntry.js",
-      // Modules to expose
       exposes: {
-        "./Button": "./src/components/counter/counter-button.component.ts",
+        "./Button": "./src/components/counter/counter-button.component.ts"
       },
+      shared: ['@angular/core']
     }),
     angular(),
   ],
