@@ -1,6 +1,6 @@
 # Vite Plugin Federation with Angular
 
-This repository tests the `@originjs/vite-plugin-federation` with Angular, based on the work done in [brandonroberts/angular-vite](https://github.com/brandonroberts/angular-vite). 
+This repository tests the `@module-federation/vite` with Angular, based on the work done in [brandonroberts/angular-vite](https://github.com/brandonroberts/angular-vite). 
 
 ## Overview
 
@@ -50,4 +50,4 @@ cd ../host
 npm run dev
 ```
 ## Contribution
-If you have insights or solutions regarding the NG0203 error or experiences with @originjs/vite-plugin-federation and Angular, please feel free to contribute or open an issue.
+If you have insights or solutions regarding the NG0203 error or experiences with @module-federation/vite and Angular, please feel free to contribute or open an issue.
