@@ -32,7 +32,7 @@ export default defineConfig(({ mode }) => ({
         },
       },
       filename: 'remoteEntry.js',
-      shared: [],
+      shared: ['@angular/core'],
     }),
   ],
 }));
