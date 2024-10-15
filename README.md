@@ -1,4 +1,4 @@
-# Vite Plugin Federation with Angular
+# Analogjs SSR test with Vite Plugin Federation
 
 This repository tests the `@module-federation/vite` with Angular and AnalogJS, based on the work done in [brandonroberts/angular-vite](https://github.com/brandonroberts/angular-vite).
 It also tests a host with analogjs to test SSR. But now the module federation plugin is not compatible with SSR.
