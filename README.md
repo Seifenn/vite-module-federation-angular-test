@@ -1,23 +1,21 @@
 # Vite Plugin Federation with Angular
 
-This repository tests the `@module-federation/vite` with Angular, based on the work done in [brandonroberts/angular-vite](https://github.com/brandonroberts/angular-vite). 
+This repository tests the `@module-federation/vite` with Angular and AnalogJS, based on the work done in [brandonroberts/angular-vite](https://github.com/brandonroberts/angular-vite).
+It also tests a host with analogjs to test SSR. But now the module federation plugin is not compatible with SSR.
 
 ## Overview
 
 This project contains two applications:
 - **Remote App**: The application that exposes components.
-- **Host App**: The application that consumes the remote components.
+- **Angular Host App**: The application that consumes the remote components.
+- **Analog Host App**: The application that consumes the remote components with analogjs.
 
-The goal is to connect the remote app to the host app and display a button with a counter on the host. However, during this process, we are encountering the following error:
-
-Error loading component: b: NG0203
-
-This error leads to uncertainty about whether the issue originates from the plugin itself or its compatibility with Angular, as there are currently no examples addressing this specific use case.
+The goal is to connect the remote app to the host app and display a button with a counter on the host.We succeeded in connecting the host and the remote with angular vite and analogjs. However, during this process, the module federation plugin does not support SSR therefore we cant test the results with SSR enabled on analog.
 
 ## Repository Structure
 
 - **Remote App**: Located in the `remote` directory, this app exposes a button component.
-- **Host App**: Located in the `host` directory, this app attempts to load and display the component from the remote app.
+- **Host/Analog App**: Located in the `host` directory, this app attempts to load and display the component from the remote app.
 
 ## Installation
 
@@ -39,15 +37,10 @@ To get started with this repository, follow these steps:
  cd ../remote
 npm run build
 ```
-4. Serve the remote app using a local server (e.g., http-server):
- ```bash
- npm install -g http-server
-http-server ./dist --port [yourspecificport] --cors
-```
-5. Run the host app::
+4. Run the host app /Analog app:
  ```bash
 cd ../host
 npm run dev
 ```
 ## Contribution
-If you have insights or solutions regarding the NG0203 error or experiences with @module-federation/vite and Angular, please feel free to contribute or open an issue.
+If you have insights or solutions regarding integrating SSR with @module-federation/vite , AnalogsJS and Angular, please feel free to contribute or open an issue.
