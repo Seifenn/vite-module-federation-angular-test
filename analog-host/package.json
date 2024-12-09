@@ -27,7 +27,7 @@
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/platform-server": "^18.0.0",
     "@angular/router": "^18.0.0",
-    "@module-federation/vite": "1.1.2",
+    "@module-federation/vite": "1.1.9",
     "front-matter": "^4.0.2",
     "marked": "^5.0.2",
     "marked-gfm-heading-id": "^3.1.0",
