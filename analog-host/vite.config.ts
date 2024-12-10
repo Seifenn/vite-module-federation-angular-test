@@ -2,10 +2,11 @@
 
 import { defineConfig } from 'vite';
 import analog from '@analogjs/platform';
-import { federation } from '@module-federation/vite';
+import { federation } from '@gioboa/vite-module-federation';
+import { esBuildAdapter } from '@softarc/native-federation-esbuild';
 
 // https://vitejs.dev/config/
-export default defineConfig(({ mode }) => ({
+export default defineConfig(({ mode, command }) => ({
   build: {
     target: ['es2022'],
   },
@@ -14,25 +15,22 @@ export default defineConfig(({ mode }) => ({
   },
   plugins: [
     analog({
-      ssr: false,
+      ssr: true,
       static: false,
       prerender: {
         routes: [],
       },
     }),
     federation({
-      name: 'host-app',
-      remotes: {
-        remote_app: {
-          type: 'module',
-          name: 'remote_app',
-          entry: 'http://localhost:5174/remoteEntry.js',
-          entryGlobalName: 'remote_app',
-          shareScope: 'default',
-        },
+      options: {
+        workspaceRoot: __dirname,
+        outputPath: 'dist/analog/',
+        tsConfig: 'tsconfig.app.json',
+        federationConfig: './federation.config.cjs',
+        verbose: true,
+        dev: command === 'serve', 
       },
-      filename: 'remoteEntry.js',
-      shared: ['@angular/core'],
+      adapter: esBuildAdapter,
     }),
   ],
 }));

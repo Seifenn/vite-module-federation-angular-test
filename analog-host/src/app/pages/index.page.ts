@@ -6,7 +6,7 @@ import { Component, ViewChild, ViewContainerRef } from '@angular/core';
   template: `
     <h2>Analog</h2>
     <h3>HostApp</h3>
-    <div #remote_appButton></div>
+    <!-- <div #remote_appButton></div> -->
   `,
   styles: `
     :host {
@@ -18,10 +18,10 @@ import { Component, ViewChild, ViewContainerRef } from '@angular/core';
   `,
 })
 export default class HomeComponent {
-  @ViewChild('remote_appButton', { read: ViewContainerRef })
-  viewContainer!: ViewContainerRef;
-  async ngAfterViewInit() {
-  	const m = await import('remote_app/Button');
-  	this.viewContainer.createComponent(m.CounterButtonComponent);
-  }
+  // @ViewChild('remote_appButton', { read: ViewContainerRef })
+  // viewContainer!: ViewContainerRef;
+  // async ngAfterViewInit() {
+  // 	const m = await import('remote_app/Button');
+  // 	this.viewContainer.createComponent(m.CounterButtonComponent);
+  // }
 }

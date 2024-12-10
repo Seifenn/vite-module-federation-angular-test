@@ -17,6 +17,7 @@
   "dependencies": {
     "@analogjs/content": "^1.8.2",
     "@analogjs/router": "^1.8.2",
+    "@angular-architects/native-federation": "^18.2.3",
     "@angular/animations": "^18.0.0",
     "@angular/build": "^18.0.0",
     "@angular/common": "^18.0.0",
@@ -27,7 +28,8 @@
     "@angular/platform-browser-dynamic": "^18.0.0",
     "@angular/platform-server": "^18.0.0",
     "@angular/router": "^18.0.0",
-    "@module-federation/vite": "1.1.2",
+    "@gioboa/vite-module-federation": "^0.2.6",
+    "@softarc/native-federation-esbuild": "^2.0.11",
     "front-matter": "^4.0.2",
     "marked": "^5.0.2",
     "marked-gfm-heading-id": "^3.1.0",
